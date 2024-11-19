@@ -3,7 +3,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 
 import ConvexClerkProvider from "../providers/convexClerkProvider";
-// import AudioPrer from "@/providers/AudioProvider";ovid
+import AudioProvider from "@/providers/audio-provider";
 
 const manrope = Manrope({ subsets: ["latin"] });
 
@@ -21,10 +21,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${manrope.className}`}>
-        <ConvexClerkProvider>{children}</ConvexClerkProvider>
-      </body>
-    </html>
+    <ConvexClerkProvider>
+      <html lang="en">
+        <AudioProvider>
+        <body className={`${manrope.className}`}>{children}</body>
+        </AudioProvider>
+      </html>
+    </ConvexClerkProvider>
   );
 }

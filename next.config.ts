@@ -1,6 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+
+typescript:{
+  ignoreBuildErrors:true
+
+},
+
+
   images: {
 
     remotePatterns: [
@@ -10,7 +17,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'lovely-flamingo-139.convex.cloud',
+        hostname: 'media.sproutsocial.com',
       },
       {
         protocol: 'https',

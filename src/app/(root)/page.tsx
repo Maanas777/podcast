@@ -5,8 +5,16 @@ import { podcastData } from "@/constants";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import React from "react";
+import LoaderSpinner from "@/components/Spinner";
 
 const Home = () => {
+
+  const trendingPodcasts = useQuery(api.podcasts.getAllPodcasts);
+
+  if(!trendingPodcasts) return <LoaderSpinner />
+
+
+
 
   return (
     <div className="mt-9 flex flex-col gap-9 md:overflow-hidden">
@@ -16,13 +24,13 @@ const Home = () => {
       
 
         <div className="podcast_grid">
-          {podcastData.map(({ id, title, description, imgURL }) => (
+          {trendingPodcasts.map(({ _id, podcastTitle, podcastDescription, imageUrl }) => (
             <PodcastCard
-              podcastId={id}
-              title={title}
-              description={description}
-              imgURL={imgURL}
-              key={id}
+              podcastId={_id}
+              title={podcastTitle}
+              description={podcastDescription}
+              imgUrl={imageUrl}
+              key={_id}
             />
           ))}
         </div>

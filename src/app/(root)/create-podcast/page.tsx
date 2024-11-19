@@ -134,7 +134,7 @@ export default function CreatePodcast() {
                   </FormLabel>
                   <FormControl>
                     <Input
-                      className="input-class focus-visible:ring-offset-orange-1"
+                      className="input-class focus-visible:ring-offset-[#1DB954]"
                       placeholder="Podcast"
                       {...field}
                     />
@@ -160,10 +160,10 @@ export default function CreatePodcast() {
                     className="placeholder:text-gray-1"
                   />
                 </SelectTrigger>
-                <SelectContent className="text-16 border-none bg-black-1 font-bold text-white-1 focus:ring-orange-1">
+                <SelectContent className="text-16 border-none bg-black-1 font-bold text-white-1 focus:ring-[#1DB954]">
                   {languageOptions.map((item) => (
                     <SelectItem
-                      className="capitalize focus:bg-orange-1"
+                      className="capitalize focus:bg-[#1DB954]"
                       key={item.code}
                       value={item.code}
                     >
@@ -187,7 +187,7 @@ export default function CreatePodcast() {
                   </FormLabel>
                   <FormControl>
                     <Textarea
-                      className="input-class focus-visible:ring-offset-orange-1"
+                      className="input-class focus-visible:ring-offset-[#1DB954]"
                       placeholder="Write a Podcast Description"
                       {...field}
                     />
@@ -220,7 +220,7 @@ export default function CreatePodcast() {
             <div className="mt-10 w-full">
               <Button
                 type="submit"
-                className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1"
+                className="text-16 w-full bg-[#1DB954] py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1"
               >
                 {isSubmitting ? (
                   <>

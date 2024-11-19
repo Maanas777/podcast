@@ -29,14 +29,15 @@ const RightSidebar = () => {
               alt="arrow"
               width={24}
               height={24}
+              
             />
           </div>
         </Link>
       </SignedIn>
 
       <section>
-        <Header />
-        <Carousel fansLikeDetail={topPodcasters!}/>
+     
+        <Carousel  fansLikeDetail={topPodcasters!}/>
       </section>
 
       <section className="flex flex-col gap-8 pt-12">

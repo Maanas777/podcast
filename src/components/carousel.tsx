@@ -32,7 +32,7 @@ const EmblaCarousel = ({ fansLikeDetail }: CarouselProps) => {
   );
   const slides =
     fansLikeDetail &&
-    fansLikeDetail?.filter((item: any) => item.totalPodcasts > 0);
+    fansLikeDetail?.filter((item) => item.totalPodcasts > 0);
 
   return (
     <section

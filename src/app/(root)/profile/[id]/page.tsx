@@ -23,9 +23,9 @@ const Profile = ({ params }: {params:{id:string}}) => {
       </header>
 
       <ProfileCard
-        podcastData={podcastsData!}
-        imageUrl={user?.imageUrl!}
-        userFirstName={user?.name!}
+        podcastData={podcastsData}
+        imageUrl={user?.imageUrl}
+        userFirstName={user?.name}
       />
 
       <section className="mt-9 flex flex-col gap-5">

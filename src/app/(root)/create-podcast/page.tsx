@@ -27,20 +27,28 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
+import { languageOptions } from "@/constants";
 import { useState } from "react";
 import GeneratePodcast from "@/components/generate-podcast";
 import GenerateThumbnail from "@/components/generate-thumbnail";
 import { Loader } from "lucide-react";
 import { Id } from "../../../../convex/_generated/dataModel";
+import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "convex/react";
+import { api } from "../../../../convex/_generated/api";
+import { useRouter } from "next/navigation";
+
 
 const formSchema = z.object({
   podcastTitle: z.string().min(2),
   podcastDescription: z.string().min(2),
 });
 
-const voiceCategories = ["alloy", "shimmer", "nova", "echo", "fable", "onyx"];
 
-export default function ProfileForm() {
+
+
+
+export default function CreatePodcast() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -48,6 +56,7 @@ export default function ProfileForm() {
       podcastDescription: "",
     },
   });
+  const router=useRouter()
 
   const [imagePrompt, setImagePrompt] = useState("");
   const [imageStorageId, setImageStorageId] = useState<Id<"_storage"> | null>(
@@ -65,11 +74,46 @@ export default function ProfileForm() {
   const [voicePrompt, setVoicePrompt] = useState("");
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const createPodcast = useMutation(api.podcasts.createPodcast)
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  const {toast}=useToast()
+
+
+  async function onSubmit(data: z.infer<typeof formSchema>) {
+    try {
+      setIsSubmitting(true);
+      if(!audioUrl || !imageUrl || !voiceType) {
+        toast({
+          title: 'Please generate audio and image',
+        })
+        setIsSubmitting(false);
+        throw new Error('Please generate audio and image')
+      }
+
+      const podcast = await createPodcast({
+        podcastTitle: data.podcastTitle,
+        podcastDescription: data.podcastDescription,
+        audioUrl,
+        imageUrl,
+        voiceType,
+        imagePrompt,
+        voicePrompt,
+        views: 0,
+        audioDuration,
+        audioStorageId: audioStorageId!,
+        imageStorageId: imageStorageId!,
+      })
+      toast({ title: 'Podcast created' })
+      setIsSubmitting(false);
+      router.push('/')
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: 'Error',
+        variant: 'destructive',
+      })
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -92,7 +136,7 @@ export default function ProfileForm() {
                   <FormControl>
                     <Input
                       className="input-class focus-visible:ring-offset-orange-1"
-                      placeholder="JSM Pro Podcast"
+                      placeholder="Podcast"
                       {...field}
                     />
                   </FormControl>
@@ -118,13 +162,13 @@ export default function ProfileForm() {
                   />
                 </SelectTrigger>
                 <SelectContent className="text-16 border-none bg-black-1 font-bold text-white-1 focus:ring-orange-1">
-                  {voiceCategories.map((item) => (
+                  {languageOptions.map((item) => (
                     <SelectItem
                       className="capitalize focus:bg-orange-1"
-                      key={item}
-                      value={item}
+                      key={item.code}
+                      value={item.code}
                     >
-                      {item}
+                      {item.name}
                     </SelectItem>
                   ))}
                 </SelectContent>

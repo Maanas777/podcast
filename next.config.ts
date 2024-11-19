@@ -20,6 +20,18 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'placeimg.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'keen-mallard-331.convex.cloud',
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.clerk.com',
+      },
     ],
   },
 };

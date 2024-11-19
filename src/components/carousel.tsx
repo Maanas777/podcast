@@ -7,10 +7,7 @@ import { CarouselProps } from "../../types";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-type PropType = {
-  slides: number[];
-  options?: EmblaOptionsType;
-};
+
 
 const EmblaCarousel = ({ fansLikeDetail }: CarouselProps) => {
   const router = useRouter();

@@ -33,30 +33,25 @@ const PodcastDetailPlayer = ({
   const handleDelete = async () => {
     try {
       await deletePodcast({ podcastId, imageStorageId, audioStorageId });
-      toast({
-        title: "Podcast deleted",
-      });
+      toast({ title: "Podcast deleted" });
       router.push("/");
     } catch (error) {
       console.error("Error deleting podcast", error);
-      toast({
-        title: "Error deleting podcast",
-        variant: "destructive",
-      });
+      toast({ title: "Error deleting podcast", variant: "destructive" });
     }
   };
 
   const handlePlay = () => {
-    console.log('hanlde palay called')
     setAudio({
       title: podcastTitle,
-      audioUrl,
-      imageUrl,
+      audioUrl: audioUrl ?? "",
+      imageUrl: imageUrl ?? "",
       author,
       podcastId,
     });
   };
 
+ 
   if (!imageUrl || !authorImageUrl) return <LoaderSpinner />;
 
   return (
@@ -76,9 +71,7 @@ const PodcastDetailPlayer = ({
             </h1>
             <figure
               className="flex cursor-pointer items-center gap-2"
-              onClick={() => {
-                router.push(`/profile/${authorId}`);
-              }}
+              onClick={() => router.push(`/profile/${authorId}`)}
             >
               <Image
                 src={authorImageUrl}
@@ -99,7 +92,7 @@ const PodcastDetailPlayer = ({
               src="/icons/Play.svg"
               width={20}
               height={20}
-              alt="random play"
+              alt="Play"
             />{" "}
             &nbsp; Play podcast
           </Button>
@@ -111,14 +104,14 @@ const PodcastDetailPlayer = ({
             src="/icons/three-dots.svg"
             width={20}
             height={30}
-            alt="Three dots icon"
+            alt="Options"
             className="cursor-pointer"
             onClick={() => setIsDeleting((prev) => !prev)}
           />
           {isDeleting && (
             <div
               className="absolute -left-32 -top-2 z-10 flex w-32 cursor-pointer justify-center gap-2 rounded-md bg-black-6 py-1.5 hover:bg-black-2"
-            //   onClick={handleDelete}
+              onClick={handleDelete} 
             >
               <Image
                 src="/icons/delete.svg"

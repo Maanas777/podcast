@@ -6,7 +6,7 @@ import { api } from "../../../../../convex/_generated/api";
 import EmptyState from "@/components/empty-state";
 import PodcastCard from "@/components/podcast-card";
 
-const Profile = ({ params }: any) => {
+const Profile = ({ params }: {params:{id:string}}) => {
   const { id } = React.use(params);
 
   const user = useQuery(api.users.getUserById, {

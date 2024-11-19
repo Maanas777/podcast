@@ -1,7 +1,6 @@
 "use client";
 
 import PodcastCard from "@/components/podcast-card";
-import { podcastData } from "@/constants";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import React from "react";
@@ -12,8 +11,6 @@ const Home = () => {
   const trendingPodcasts = useQuery(api.podcasts.getAllPodcasts);
 
   if(!trendingPodcasts) return <LoaderSpinner />
-
-
 
 
   return (

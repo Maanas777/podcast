@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { PodcastCardProps } from "../../types";
 
 
-const podcastCard = ({
+const PodcastCard = ({
   podcastId,
   title,
   description,
@@ -39,4 +39,4 @@ const podcastCard = ({
   );
 };
 
-export default podcastCard;
+export default PodcastCard;

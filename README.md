@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎙️ Spoticast
 
-## Getting Started
+## 🌟 Overview
+**Spoticast** is a cutting-edge SaaS platform that empowers users to create and publish podcasts with ease. Whether it's transforming text into high-quality audio or generating eye-catching thumbnails, Spoticast combines **Text-to-Speech (TTS)** and **Text-to-Image (TTI)** functionalities to redefine podcast creation.
 
-First, run the development server:
+### 🚨 Important Notes:
+- **Audio Generation**: Now powered by **Voiceress** due to OpenAI subscription expiration.
+- **Image Generation**: Temporarily disabled due to charges, but functionality can be re-enabled with OpenAI API keys (code is commented for reference).
+
+---
+
+## ✨ Features
+- 🎧 **Create & Publish Podcasts**: Transform text into engaging audio podcasts and customize thumbnails (temporarily disabled).
+- 🔍 **Discover & Listen**: Explore trending and community-created podcasts.
+- 👤 **User Profile Page**: Display user details and their created podcasts.
+- 🔗 **Seamless Integrations**: Convex, Clerk, and Voiceress for a robust and dynamic experience.
+
+---
+
+## 🛠️ Technologies Used
+| **Category**     | **Technologies**                                           |
+|-------------------|-----------------------------------------------------------|
+| **Frontend**      | React.js, Next.js, Tailwind CSS, ShadCN UI                |
+| **Backend**       | Node.js, Express.js, Convex, Clerk, Voiceress             |
+| **Database**      | Convex (used for backend data storage)                    |
+| **Integrations**  | Voiceress API (Text-to-Speech), DeepAI, Clerk (authentication) |
+
+---
+
+## ⚙️ Prerequisites
+Ensure you have the following installed:
+1. **Node.js** (v16 or above recommended).
+2. **Yarn** (optional but recommended for package management).
+
+---
+
+## 🚀 Installation & Configuration
+
+### Step 1: Clone the Repository
+Clone the repository to your local machine:
+```bash
+git clone https://github.com/Maanas777/podcast
+cd Podcast
+## Installation & Configuration
+
+### Step 1: Clone the repository
+Clone the repository to your local machine:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clonehttps://github.com/Maanas777/podcast
+cd Podcast
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Step 2: Install dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+``` bash
+npm install
+# or
+yarn install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Step 3: Set up the environment variables
+Create a .env file in the root directory and add the following environment variables:
 
-## Learn More
+``` bash
+# Convex configuration
+CONVEX_DEPLOYMENT
+NEXT_PUBLIC_CONVEX_URL
 
-To learn more about Next.js, take a look at the following resources:
+# Clerk configuration
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+CLERK_SECRET_KEY
+CLERK_WEBHOOK_SECRET
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+NEXT_PUBLIC_CLERK_SIGN_IN_URL='/sign-in'
+NEXT_PUBLIC_CLERK_SIGN_UP_URL='/sign-up'
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Voiceress API Key (for text-to-speech)
+VOICERSS_API_KEY
 
-## Deploy on Vercel
+# DeepAI API Key (for text-to-image - optional if you re-enable image generation)
+DEEPAI_API_KEY
+```
+## 🎥 References
+- **Convex** and **Clerk Setup** : [Watch the Video Guide](https://youtu.be/gR9ghXOyIQ4?si=BWVhqFH6mkR1JCNv)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🌐 Live Application
+Check out the live version of the app here:  
+👉 [Live Application Link](https://podcast-gules.vercel.app/)
+
+---
+
+## 📌 Notes
+- The code for **Text-to-Image thumbnail generation** using OpenAI has been commented out. You can refer to it for re-enabling the feature once the necessary API keys are available.
+- **Voiceress** is now used for audio generation, replacing OpenAI's TTS service.
